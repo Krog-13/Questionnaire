@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+
+    <table class="table table-hover">
+        <tr>
+            <td>
+                <h3>{{ user.specialist.fullname }}</h3>
+                <em>Дата рождения {{ user.birthday.date() }}, {{age}} - лет</em>
+                <br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Место проживание</h4>
+            </td>
+            <td>
+                <span >{{ user.city }}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Образование</h4>
+            </td>
+            <td>
+                <span >{{ user.education }}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Специализация</h4>
+            </td>
+            <td>
+                <span >{{ user.mastery }}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Проффесиональные навыки</h4>
+            </td>
+            <td>
+                <span >{{ user.skill }}</span>
+            </td>
+        </tr>
+    </table>
+{% endblock %}

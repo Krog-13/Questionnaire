@@ -1,0 +1,12 @@
+    <table class="table table-hover">
+        <tr>
+            <td>
+                {% set user_link %}
+                    <a href="{{ url_for('main.user', id=post.id) }}">
+                        {{ post.fullname }}</a>
+                {% endset %}
+                <p>{{ user_link }}</p>
+                <br>
+            </td>
+        </tr>
+    </table>

@@ -1,0 +1,20 @@
+.idea
+*.py[cod]
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info
+test.py
+__pycache__
+venv
+app.db
+portfolio.log
+lib
+app/templates/static
+logs
+lib64
+migrations/*
+migrations
