@@ -43,6 +43,9 @@ def edit(id):
 @bp.route('/profile', methods=['GET', 'POST'])
 @login_required
 def profile():
+    check_exist = Profile.query.filter_by(user_id=current_user.id).first()
+    if check_exist:
+        return redirect(url_for('main.edit', id=current_user.id))
     form = ProfileForm()
     if form.validate_on_submit():
         profile = Profile(
