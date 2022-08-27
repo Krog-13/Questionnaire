@@ -62,8 +62,6 @@ class Profile(UserMixin, PaginatedAPIMixin, db.Model):
     def __repr__(self):
         return f'Profile - {self.city}'
 
-    def if_exist(self):
-        return True if self.id else False
 
 @login.user_loader
 def load_user(id):

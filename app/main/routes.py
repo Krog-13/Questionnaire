@@ -36,8 +36,8 @@ def edit(id):
         data.contact = form.contact.data
         db.session.commit()
         flash('Ваши данные отредоктированны')
-        return render_template('userv.html', user=data, form=form, age=age)
-    return render_template('user.html', user=user, form=form, data=data, id=id)
+        return render_template('view.html', user=data, form=form, age=age)
+    return render_template('edit_profile.html', user=user, form=form, data=data, id=id)
 
 
 @bp.route('/profile', methods=['GET', 'POST'])
@@ -67,4 +67,4 @@ def profile():
 def user(id):
     data = Profile.query.filter_by(user_id=id).first_or_404()
     age = utils.get_age(data.birthday)
-    return render_template('userv.html', user=data, age=age)
+    return render_template('view.html', user=data, age=age)
