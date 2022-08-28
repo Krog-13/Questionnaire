@@ -2,7 +2,6 @@ from app import db
 from app.auth import bp
 from flask import request, redirect, url_for, flash, render_template, send_from_directory
 from flask_login import login_user, logout_user, current_user, login_required
-from werkzeug.utils import secure_filename
 from app.auth.forms import LoginForm, RegisterForm
 from app.models import Profile, Users
 

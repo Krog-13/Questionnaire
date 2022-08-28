@@ -4,7 +4,7 @@ from flask import request, redirect, url_for, flash, render_template, current_ap
 from flask_login import current_user, login_required
 from app.main.forms import ProfileForm
 from app.models import Profile, Users
-import utils
+import app.utils
 
 
 @bp.route('/', methods=['GET'])
@@ -25,7 +25,7 @@ def index():
 @login_required
 def edit(id):
     data = Profile.query.filter_by(user_id=id).first_or_404()
-    age = utils.get_age(data.birthday)
+    age = app.utils.get_age(data.birthday)
     form = ProfileForm()
     if form.validate_on_submit():
         data.city = form.city.data
@@ -66,5 +66,5 @@ def profile():
 @bp.route('/user/<id>', methods=['GET', 'POST'])
 def user(id):
     data = Profile.query.filter_by(user_id=id).first_or_404()
-    age = utils.get_age(data.birthday)
+    age = app.utils.get_age(data.birthday)
     return render_template('view.html', user=data, age=age)
