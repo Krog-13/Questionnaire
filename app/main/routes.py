@@ -20,7 +20,7 @@ def index():
     return render_template('index.html', title='Home', posts=dossier.items,
                            next_url=next_url, prev_url=prev_url)
 
-
+# profile editing
 @bp.route('/edit/<int:id>', methods=['GET', 'POST'])
 @login_required
 def edit(id):
@@ -35,7 +35,7 @@ def edit(id):
         data.birthday = form.birthday.data
         data.contact = form.contact.data
         db.session.commit()
-        flash('Ваши данные отредоктированны')
+        flash('Ваши данные отредактированы')
         return render_template('view.html', user=data, form=form, age=age)
     return render_template('edit_profile.html', user=user, form=form, data=data, id=id)
 
@@ -44,6 +44,7 @@ def edit(id):
 @login_required
 def profile():
     check_exist = Profile.query.filter_by(user_id=current_user.id).first()
+    # if profile is completed redirect on edit profile
     if check_exist:
         return redirect(url_for('main.edit', id=current_user.id))
     form = ProfileForm()
@@ -63,7 +64,8 @@ def profile():
     return render_template('profile.html', form=form)
 
 
-@bp.route('/user/<id>', methods=['GET', 'POST'])
+# view for all users
+@bp.route('/user/<id>', methods=['GET'])
 def user(id):
     data = Profile.query.filter_by(user_id=id).first_or_404()
     age = app.utils.get_age(data.birthday)
