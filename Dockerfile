@@ -8,7 +8,6 @@ RUN venv/bin/pip install -r requirements.txt
 RUN venv/bin/pip install gunicorn
 
 COPY app app
-COPY migrations migrations
 COPY main.py config.py boot.sh .env ./
 RUN chmod +x boot.sh
 
